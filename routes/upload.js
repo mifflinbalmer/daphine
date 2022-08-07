@@ -3,7 +3,7 @@ const router = express.Router();
 
 const { createUpload } = require("../api/upload");
 
-router.get("/", function (req, res) {
+router.post("/", function (req, res) {
   createUpload(req, res);
 });
 
