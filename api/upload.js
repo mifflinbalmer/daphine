@@ -1,4 +1,4 @@
-const fileUpload = require('express-fileUpload');
+const fileUpload = require('express-fileupload');
 
 const createUpload = (req, res) => {
   if ( !req.files || Object.keys(req.files).length === 0 ) {
