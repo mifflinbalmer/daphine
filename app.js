@@ -35,7 +35,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", cors(CORS_OPT), indexRouter);
 app.use("/stream*", cors(CORS_OPT), streamRouter);
 app.use("/music*", cors(CORS_OPT), musicRouter);
-app.use("/upload", cors(CORS_OPT), uploadRouter);
+app.use("/upload*", cors(CORS_OPT), uploadRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
