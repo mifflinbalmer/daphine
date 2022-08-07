@@ -41,7 +41,7 @@ jobs:
         uses: docker/build-push-action@v3
         env:
           ACTIONS_STEP_DEBUG: true
-          VOLUME_PATH: /juche
+          VOLUME_PATH: /kim
         with:
           context: ./
           file: ./Dockerfile
