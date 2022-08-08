@@ -9,8 +9,13 @@ createView = () => {
     }
 
     files.forEach(file => {
-      console.log(`file: ${ file }`);
-      return file;
+      fs.readFile(`${ filesPath }/${ file }`, (err, data) => {
+        if ( err ) {
+          console.error(`Unable to read file: ${ err }`);
+        }
+        
+        return data;
+      });
     });
   });
 }
