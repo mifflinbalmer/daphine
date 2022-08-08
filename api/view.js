@@ -1,6 +1,6 @@
 const fs = require("fs");
 
-createView = () => {
+createView = (req, res) => {
   const filesPath = `${ process.env.VOLUME_PATH }/assets/files`;
 
   fs.readdir(filesPath, (err, files) => {
@@ -14,9 +14,12 @@ createView = () => {
           console.error(`Unable to read file: ${ err }`);
         }
         
-        return data;
+        res.contentType(path.basename(file));
+        res.send(data);
       });
     });
+
+    res.end();
   });
 }
 
