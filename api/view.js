@@ -9,6 +9,7 @@ createView = () => {
     }
 
     files.forEach(file => {
+      console.log(`file: ${ file }`);
       return file;
     });
   });
