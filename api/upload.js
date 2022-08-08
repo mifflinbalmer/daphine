@@ -8,10 +8,12 @@ const createUpload = (req, res) => {
     return res.status(400).send('No files were uploaded.');
   }
 
-  for ( const file of req.files ) {
-    let uploadPath = `${ process.env.VOLUME_PATH }/assets/files/${ file.name }`;
+  console.log(req.files);
 
-    file.mv(uploadPath, (err) => {
+  for ( const key of Object.keys(req.files) ) {
+    let uploadPath = `${ process.env.VOLUME_PATH }/assets/files/${ req.files[key].name }`;
+
+    req.files[key].mv(uploadPath, (err) => {
       if ( err ) {
         return res.status(500).send(err);
       }
