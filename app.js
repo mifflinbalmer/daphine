@@ -2,6 +2,7 @@ const createError = require("http-errors");
 const express = require("express");
 const cors = require("cors");
 const path = require("path");
+const fileUpload = require('express-fileupload');
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 
@@ -9,6 +10,7 @@ const indexRouter = require("./routes/index");
 const streamRouter = require("./routes/stream");
 const musicRouter = require("./routes/music");
 const uploadRouter = require("./routes/upload");
+const viewRouter = require("./routes/view");
 
 const app = express();
 
@@ -37,6 +39,7 @@ app.use("/", cors(CORS_OPT), indexRouter);
 app.use("/stream*", cors(CORS_OPT), streamRouter);
 app.use("/music*", cors(CORS_OPT), musicRouter);
 app.use("/upload*", cors(CORS_OPT), uploadRouter);
+app.use("/view*", cors(CORS_OPT), viewRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
