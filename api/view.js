@@ -1,6 +1,6 @@
 const fs = require("fs");
 
-createView = () => {
+createView = (req, res) => {
   const filesPath = `${ process.env.VOLUME_PATH }/assets/files`;
 
   fs.readdir(filesPath, (err, files) => {
@@ -9,14 +9,17 @@ createView = () => {
     }
 
     files.forEach(file => {
-      fs.readFile(`${ filesPath }/${ file }`, (err, data) => {
-        if ( err ) {
-          console.error(`Unable to read file: ${ err }`);
-        }
-        
-        return data;
+      const fileStream = fs.createReadStream(`${ filesPath }/${ file }`);
+
+      fileStream.on("error", (error) => {
+        console.error(`Error with file stream: ${ error }`);
+        res.sendStatus(500);
       });
+
+      fileStream.pipe(res);
     });
+
+    res.end();
   });
 }
 
