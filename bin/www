@@ -18,7 +18,7 @@ const normalizePort = ( p ) => {
     return port;
   }
 
-  return false;
+  return null;
 }
 
 const onError = ( error ) => {
@@ -26,7 +26,7 @@ const onError = ( error ) => {
     throw error;
   }
 
-  const bind = typeof port === 'string' ? 'Pipe ' + port : 'Port ' + port;
+  const bind = typeof port === 'string' ? `Pipe ${ port }` : `Port ${ port }`;
 
   switch ( error.code ) {
     case 'EACCES':
@@ -45,7 +45,7 @@ const onError = ( error ) => {
 const onListening = () => {
   const a = server.address();
 
-  const bind = typeof a === 'string' ? 'pipe ' + a : 'port ' + a.port;
+  const bind = typeof a === 'string' ? `pipe ${ a }` : `port ${ a.port }`;
   debug('Listening on ' + bind);
 }
 

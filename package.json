@@ -1,7 +1,7 @@
 {
-  "name": "daphine piaget",
+  "name": "Daphine Piaget",
   "version": "v0.1.0",
-  "description": "api for freedom",
+  "description": "The api for freedom.",
   "private": true,
   "scripts": {
     "start": "node ./bin/www"
